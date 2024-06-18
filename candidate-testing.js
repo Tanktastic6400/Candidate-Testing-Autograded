@@ -4,7 +4,7 @@ const input = require('readline-sync');
 
 // TODO 1.1a: Define candidateName // 
 let candidateName = askForName();
-
+console.log(candidateName);
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question;
 let correctAnswer;
@@ -19,7 +19,7 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-    input.question("Please enter your name:")
+    return input.question("Please enter your name:")
 }
 
 function askQuestion() {
@@ -48,7 +48,6 @@ function runProgram() {
   gradeQuiz(this.candidateAnswers);
 }
 
-runProgram();
 
 // ----------- Don't write any code or change any code below this line ---------- //
 module.exports = {
