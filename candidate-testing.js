@@ -1,5 +1,5 @@
 const input = require('readline-sync');
-
+let score=0;
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
@@ -12,26 +12,47 @@ let candidateAnswer = "";
 
 
 //TODO: Variables for Part 2
-let questions;
-let correctAnswers;
-let candidateAnswers;
+let questions = ["Who was the first American woman in space? ","True or false: 5 kilometer == 5000 meters? ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
+let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
+let candidateAnswers = [];
 
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
     candidateName = input.question("Please enter your name:")
+    score =0;
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  candidateAnswer = input.question(question);
+  /*candidateAnswer = input.question(question);
+  if(candidateAnswer === correctAnswer){
+    console.log("That is correct");
+    score++;
+  }else{
+    console.log("That is incorrect");
+  }
+    */
+   for(let i = 0; i < questions.length; i++){
+    candidateAnswers[i] = input.question(questions[i]);
+    if(candidateAnswers[i] === correctAnswers[i]){
+      console.log("That was correct");
+    }else{console.log("that was incorrect");}
+   }
 
 }
 
 function gradeQuiz(candidateAnswers) {
-
+  
+console.log("Your score is: " + score * 20);
+score = 0;
+for(let i =0; i<candidateAnswers.length; i++){
+  if(candidateAnswers[i] === correctAnswers[i]){
+    score++;
+  }
+}
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
+return (score * 20);
 
 
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
@@ -47,7 +68,7 @@ function runProgram() {
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
-
+//runProgram();
 
 // ----------- Don't write any code or change any code below this line ---------- //
 module.exports = {
