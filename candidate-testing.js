@@ -48,7 +48,28 @@ function gradeQuiz(candidateAnswers) {
 //reset score
 let correctQuestions = 0;
 
-//format answers
+formatAnswers(candidateAnswers);
+  
+
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  for(let i = 0; i < questions.length; i++){
+    if(candidateAnswers[i] === correctAnswers[i]){
+      console.log(`You answered question number ${i+1} Correctly`);
+      correctQuestions++;
+    }else{
+      console.log(`You answered question number ${i+1} Inorrectly`);
+    }
+  }
+
+
+  let grade = (correctQuestions / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+
+
+  return grade;
+}
+
+function formatAnswers(candidateAnswers){
+  //format answers
 let temp = "";
 //console.log("Before: " + candidateAnswers);
 for(let i = 0; i < candidateAnswers.length; i++){
@@ -70,23 +91,7 @@ for(let i = 0; i < candidateAnswers.length; i++){
     }
     candidateAnswers[i] = temp;
 }//end of format loop
-  
 
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for(let i = 0; i < questions.length; i++){
-    if(candidateAnswers[i] === correctAnswers[i]){
-      console.log(`You answered question number ${i+1} Correctly`);
-      correctQuestions++;
-    }else{
-      console.log(`You answered question number ${i+1} Inorrectly`);
-    }
-  }
-
-
-  let grade = (correctQuestions / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
-  return grade;
 }
 
 function runProgram() {
