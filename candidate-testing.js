@@ -1,5 +1,5 @@
 const input = require('readline-sync');
-let score=0;
+
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
@@ -35,27 +35,30 @@ function askQuestion() {
     */
    for(let i = 0; i < questions.length; i++){
     candidateAnswers[i] = input.question(questions[i]);
-    if(candidateAnswers[i] === correctAnswers[i]){
-      console.log("That was correct");
-    }else{console.log("that was incorrect");}
+  
    }
 
 }
 
 function gradeQuiz(candidateAnswers) {
   
-console.log("Your score is: " + score * 20);
-score = 0;
-for(let i =0; i<candidateAnswers.length; i++){
-  if(candidateAnswers[i] === correctAnswers[i]){
-    score++;
-  }
-}
+//reset score
+let correctQuestions = 0;
+
+//loop through answers
+
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-return (score * 20);
+  for(let i =0; i<candidateAnswers.length; i++){
+    if(candidateAnswers[i] === correctAnswers[i]){
+      console.log(`You answered question number ${i+1} Correctly`);
+      correctQuestions++;
+    }else{
+      console.log(`You answered question number ${i+1} Inorrectly`);
+    }
+  }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = (correctQuestions / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
 
 
   return grade;
