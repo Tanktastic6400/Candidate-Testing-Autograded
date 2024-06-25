@@ -58,7 +58,7 @@ formatAnswers(candidateAnswers);
   let grade = (correctQuestions / questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
   console.log(`Your final grade is: ${grade}% (${correctQuestions} out of ${questions.length} answers were correct)`);
 
-  if(grade > 50){
+  if(grade > 80){
     console.log("Result: PASSED\n");
   }else{console.log("Result: FAILED\n");}
 
