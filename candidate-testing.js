@@ -38,7 +38,7 @@ function gradeQuiz(candidateAnswers) {
 //reset score
 let correctQuestions = 0;
 
-formatAnswers(candidateAnswers);
+//(candidateAnswers);
   console.log("\n\n\n--------------------------------------------------------------------");
   console.log("Candidate name: " + candidateName);
   
@@ -47,7 +47,7 @@ formatAnswers(candidateAnswers);
  
    printQuizResults(i);
    
-    if(candidateAnswers[i] === correctAnswers[i]){
+    if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
       correctQuestions++;
     }//end of else
   }//end of for
@@ -84,23 +84,10 @@ let temp = "";
 for(let i = 0; i < candidateAnswers.length; i++){
    temp = "";
    //figure out the question that you haven't formated yet and format them.
-    if(i === 0){
-        //capitalize the first letter of each word and slice the rest on lowercase
-        temp += candidateAnswers[i][0].toUpperCase() + candidateAnswers[i].slice(1,6).toLowerCase();
-        temp += candidateAnswers[i].charAt(candidateAnswers[i].indexOf(" ") + 1).toUpperCase() + candidateAnswers[i].slice(7);
-
-    }else if(i === 1){
-        //lower case all the letters
-        temp += candidateAnswers[i].toLowerCase();
-    }else if(i === 3){
-        //capitalize the first letter and lowercase the rest.
-        temp += candidateAnswers[i][0].toUpperCase() + candidateAnswers[i].slice(1).toLowerCase();
-    }else{
-        temp = candidateAnswers[i];
-    }
-    candidateAnswers[i] = temp;
+    candidateAnswers[i] = candidateAnswers[i].toLowerCase();
+    
 }//end of format loop
-
+return candidateAnswers;
 }
 
 function runProgram() {
